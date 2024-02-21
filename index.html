@@ -8,36 +8,45 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Simple Calculator</title>
     <style>
-    body {
-        background-color: #f5f5f5; 
-        font-family: 'Roboto', sans-serif; 
-    }
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+            width: 100%;
+            position: relative;
+        }
 
-    input {
-        width: 80px;
-        height: 80px;
-        background-color: #3498db;
-        color: #fff; 
-        border: 2px solid #2980b9;
-        border-radius: 8px; 
-        margin: 5px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+        input {
+            width: 80px;
+            height: 80px;
+            background-color: #3498db;
+            color: #fff;
+            border: 2px solid #2980b9;
+            border-radius: 8px;
+            margin: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-    input:hover {
-        background-color: #2980b9;
-    }
+        input:hover {
+            background-color: #2980b9;
+        }
 
-    input[type="text"] {
-        width: 450px;
-        height: 65px;
-        background-color: #ecf0f1;
-        border: 2px solid #bdc3c7;
-        border-radius: 8px;
-        font-size: 24px;
-    }
+        input:focus {
+            background-color: #2980b9;
+        }
+
+        input[type="text"] {
+            width: 450px;
+            height: 65px;
+            color: black;
+            padding-left: 16px;
+            background-color: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 24px;
+        }
+
         input {
             width: 479px;
             height: 60px;
@@ -55,25 +64,37 @@
             border: none;
             box-shadow: 0px 0px 30px black;
             position: relative;
-            top: 40px;
+            top: 80px;
             border-radius: 10px;
         }
-        h2{
-            position: relative;
-            top: 30px;
+
+        h2 {
+            position: absolute;
+            top: 3%;
+            left: 41.2%;
             animation: ali 2s infinite linear;
         }
+        
         input[type="text"] {
             font-size: 23px;
         }
+        
+        .dd:hover{
+            background-color: rgba(255, 68, 0, 0.377);
+        }
+        .dd:focus{
+            background-color: rgba(255, 68, 0, 0.377);
+        }
         @keyframes ali {
-            30%{
+            30% {
                 color: rgb(34, 18, 71);
             }
-            90%{
-               color:orangered;
-            }   
+
+            90% {
+                color: orangered;
+            }
         }
+
     </style>
 </head>
 
@@ -83,81 +104,81 @@
 
     <table border="1" style="margin: auto;">
         <tr>
-            <td colspan="5"><input style="background-color: grey;" type="text" id="result" readonly></td>
+            <td colspan="5"><input style="background-color: rgba(128, 128, 128, 0.466); border: 2px solid black;" type="text" id="result" readonly></td>
         </tr>
         <tr>
             <td><input type="button" value="1" onclick="appendNumber('1')"></td>
             <td><input type="button" value="2" onclick="appendNumber('2')"></td>
             <td><input type="button" value="3" onclick="appendNumber('3')"></td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="/" onclick="appendOperator('/')">
-            </td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="%" onclick="appendOperator('%')">
-            </td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="/"
+                onclick="appendOperator('/')"></td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="%"
+                onclick="appendOperator('%')"></td>
         </tr>
         <tr>
             <td><input type="button" value="4" onclick="appendNumber('4')"></td>
             <td><input type="button" value="5" onclick="appendNumber('5')"></td>
             <td><input type="button" value="6" onclick="appendNumber('6')"></td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="-" onclick="appendOperator('-')">
-            </td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="*" onclick="appendOperator('*')">
-            </td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="-"
+                onclick="appendOperator('-')"></td>
+            <td class="dd"> <input  style="background-color: rgb(255, 94, 0);" type="button" value="*"
+                onclick="appendOperator('*')"></td>
         </tr>
         <tr>
             <td><input type="button" value="7" onclick="appendNumber('7')"></td>
             <td><input type="button" value="8" onclick="appendNumber('8')"></td>
             <td><input type="button" value="9" onclick="appendNumber('9')"></td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="+" onclick="appendOperator('+')">
-            </td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="cos"
-                    onclick="appendOperator('Cos')"></td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="+"
+                onclick="appendOperator('+')"></td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="cos"
+                onclick="appendOperator('Cos')"></td>
         </tr>
         <tr>
             <td><input type="button" value="0" onclick="appendNumber('0')"></td>
             <td><input type="button" value="." onclick="appendDecimal()"></td>
             <td><input type="button" value="=" onclick="calculateResult()"></td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="C" onclick="clearInput()"></td>
-            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="sin"
-                    onclick="appendOperator('Sin')"></td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="C"
+                onclick="clearInput()"></td>
+            <td class="dd"><input  style="background-color: rgb(255, 94, 0);" type="button" value="sin"
+                onclick="appendOperator('Sin')"></td>
         </tr>
     </table>
     <script>
         let currentInput = '';
 
-function appendNumber(number) {
-  currentInput += number;
-  updateDisplay();
-}
+        function appendNumber(number) {
+            currentInput += number;
+            updateDisplay();
+        }
 
-function appendOperator(operator) {
-  currentInput += ' ' + operator + ' ';
-  updateDisplay();
-}
+        function appendOperator(operator) {
+            currentInput += ' ' + operator + ' ';
+            updateDisplay();
+        }
 
-function appendDecimal() {
-  currentInput += '.';
-  updateDisplay();
-}
+        function appendDecimal() {
+            currentInput += '.';
+            updateDisplay();
+        }
 
-function calculateResult() {
-  try {
-    currentInput = eval(currentInput).toString();
-  } catch (error) {
-    currentInput = 'Error';
-  }
-  updateDisplay();
-}
+        function calculateResult() {
+            try {
+                currentInput = eval(currentInput).toString();
+            } catch (error) {
+                currentInput = 'Error';
+            }
+            updateDisplay();
+        }
 
-function clearInput() {
-  currentInput = '';
-  updateDisplay();
-}
+        function clearInput() {
+            currentInput = '';
+            updateDisplay();
+        }
 
-function updateDisplay() {
-  document.getElementById('result').value = currentInput;
-}
+        function updateDisplay() {
+            document.getElementById('result').value = currentInput;
+        }
     </script>
-
 </body>
 
 </html>
