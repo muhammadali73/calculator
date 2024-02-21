@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Simple Calculator</title>
+    <style>
+    body {
+        background-color: #f5f5f5; 
+        font-family: 'Roboto', sans-serif; 
+    }
+
+    input {
+        width: 80px;
+        height: 80px;
+        background-color: #3498db;
+        color: #fff; 
+        border: 2px solid #2980b9;
+        border-radius: 8px; 
+        margin: 5px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input:hover {
+        background-color: #2980b9;
+    }
+
+    input[type="text"] {
+        width: 450px;
+        height: 65px;
+        background-color: #ecf0f1;
+        border: 2px solid #bdc3c7;
+        border-radius: 8px;
+        font-size: 24px;
+    }
+        input {
+            width: 479px;
+            height: 60px;
+            background-color: rgba(29, 26, 73, 0.829);
+            border: 2px solid black;
+        }
+
+        input[type="button"] {
+            width: 80px;
+            height: 100px;
+            font-size: 23px;
+        }
+
+        table {
+            border: none;
+            box-shadow: 0px 0px 30px black;
+            position: relative;
+            top: 40px;
+            border-radius: 10px;
+        }
+        h2{
+            position: relative;
+            top: 30px;
+            animation: ali 2s infinite linear;
+        }
+        input[type="text"] {
+            font-size: 23px;
+        }
+        @keyframes ali {
+            30%{
+                color: rgb(34, 18, 71);
+            }
+            90%{
+               color:orangered;
+            }   
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align: center;">Simple Calculator</h2>
+
+    <table border="1" style="margin: auto;">
+        <tr>
+            <td colspan="5"><input style="background-color: grey;" type="text" id="result" readonly></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="appendNumber('1')"></td>
+            <td><input type="button" value="2" onclick="appendNumber('2')"></td>
+            <td><input type="button" value="3" onclick="appendNumber('3')"></td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="/" onclick="appendOperator('/')">
+            </td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="%" onclick="appendOperator('%')">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="appendNumber('4')"></td>
+            <td><input type="button" value="5" onclick="appendNumber('5')"></td>
+            <td><input type="button" value="6" onclick="appendNumber('6')"></td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="-" onclick="appendOperator('-')">
+            </td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="*" onclick="appendOperator('*')">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="appendNumber('7')"></td>
+            <td><input type="button" value="8" onclick="appendNumber('8')"></td>
+            <td><input type="button" value="9" onclick="appendNumber('9')"></td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="+" onclick="appendOperator('+')">
+            </td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="cos"
+                    onclick="appendOperator('Cos')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="0" onclick="appendNumber('0')"></td>
+            <td><input type="button" value="." onclick="appendDecimal()"></td>
+            <td><input type="button" value="=" onclick="calculateResult()"></td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="C" onclick="clearInput()"></td>
+            <td><input style="background-color: rgb(255, 94, 0);" type="button" value="sin"
+                    onclick="appendOperator('Sin')"></td>
+        </tr>
+    </table>
+    <script>
+        let currentInput = '';
+
+function appendNumber(number) {
+  currentInput += number;
+  updateDisplay();
+}
+
+function appendOperator(operator) {
+  currentInput += ' ' + operator + ' ';
+  updateDisplay();
+}
+
+function appendDecimal() {
+  currentInput += '.';
+  updateDisplay();
+}
+
+function calculateResult() {
+  try {
+    currentInput = eval(currentInput).toString();
+  } catch (error) {
+    currentInput = 'Error';
+  }
+  updateDisplay();
+}
+
+function clearInput() {
+  currentInput = '';
+  updateDisplay();
+}
+
+function updateDisplay() {
+  document.getElementById('result').value = currentInput;
+}
+    </script>
+
+</body>
+
+</html>
